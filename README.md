@@ -18,6 +18,12 @@ git submodule update --init --recursive
 git clone https://github.com/blynkkk/blynk-library.git blynk
 ```
 
+- there are two compile errors in the Blynk library when running with IDF, with easy fixes:
+```
+```
+
+- and some updates to CMakeLists.h and idf.component.yml
+
 - creating a blynk folder in the main folder and copying in the Blynk .h files from https://github.com/blynkkk/blynk-library/tree/master/examples/Blynk.Edgent/Edgent_ESP32
 
 - also in the blynk folder adding three new files: blynk_interface.cpp, blynk_interface.h, and blynk_main.cpp
