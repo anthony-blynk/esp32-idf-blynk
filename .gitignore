@@ -2,7 +2,6 @@
 
 ### Build Artifacts ###
 /build/
-/sdkconfig
 /sdkconfig.old
 *.bin
 *.elf
