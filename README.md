@@ -1,7 +1,36 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C5 | ESP32-C6 | ESP32-C61 | ESP32-H2 | ESP32-P4 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | --------- | -------- | -------- | -------- | -------- |
+# Blink with Blynk Example
+
+This is the ESP IDF Blink example with the Blynk.Edgent library added to it so that it supports Wifi provisioning and OTA updates from Blynk.
+
+Main changes are:
+
+- checking out the ESP32 Arduino framework into the components folder:
+```
+cd components
+git clone --recursive https://github.com/espressif/arduino-esp32.git arduino
+cd arduino
+git checkout tags/v3.2.0  # Replace with your target version
+git submodule update --init --recursive
+```
+
+- checkout aout the Blynk library into the components folder:
+```
+git clone https://github.com/blynkkk/blynk-library.git blynk
+```
+
+- creating a blynk folder in the main folder and copying in the Blynk .h files from https://github.com/blynkkk/blynk-library/tree/master/examples/Blynk.Edgent/Edgent_ESP32
+
+- also in the blynk folder adding three new files: blynk_interface.cpp, blynk_interface.h, and blynk_main.cpp
+
+- updating the existing blink_example_main.c to call blynkblynk_init() 
+
+---
+
 
 # Blink Example
+
+| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C5 | ESP32-C6 | ESP32-C61 | ESP32-H2 | ESP32-P4 | ESP32-S2 | ESP32-S3 |
+| ----------------- | ----- | -------- | -------- | -------- | -------- | --------- | -------- | -------- | -------- | -------- |
 
 (See the README.md file in the upper level 'examples' directory for more information about examples.)
 
@@ -67,4 +96,3 @@ The pixel number indicates the pixel position in the LED strip. For a single LED
 * If the LED isn't blinking, check the GPIO or the LED type selection in the `Example Configuration` menu.
 
 For any technical queries, please open an [issue](https://github.com/espressif/esp-idf/issues) on GitHub. We will get back to you soon.
-"# esp32-idf-blynk" 
