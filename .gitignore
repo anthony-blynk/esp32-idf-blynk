@@ -1,0 +1,49 @@
+# ESP-IDF and Arduino Project .gitignore
+
+### Build Artifacts ###
+/build/
+/sdkconfig
+/sdkconfig.old
+*.bin
+*.elf
+*.map
+*.lst
+*.log
+
+### IDE/Editor ###
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+### Project Files ###
+/dependencies.lock
+/compile_commands.json
+
+### Managed Components ###
+/managed_components/
+!/managed_components/README.md  # Keep the README
+
+### Arduino Cache ###
+/components/arduino/libraries/*/examples/
+/components/arduino/libraries/*/extras/
+/components/arduino/tools/
+
+### Python ###
+__pycache__/
+*.pyc
+
+### macOS ###
+.DS_Store
+
+### Windows ###
+Thumbs.db
+
+### Environment ###
+.env
+.env.local
+
+### Special Cases ###
+# Keep these files but ignore their content
+!.gitkeep
