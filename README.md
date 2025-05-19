@@ -1,4 +1,4 @@
-# Blink with Blynk Example
+# IDF Blink with Blynk Example
 
 This is the ESP IDF Blink example with the Blynk.Edgent library added to it so that it supports Wifi provisioning and OTA updates from Blynk.
 
