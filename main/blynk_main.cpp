@@ -16,7 +16,8 @@
 
 #define APP_DEBUG
 
-#include "BlynkEdgent.h"
+// #include <blynk/BlynkEdgent.h>
+#include <blynk/BlynkEdgent.h>
 
 #define LED_PIN 2  // Use pin 2 for LED (change it, if your board uses another pin)
 

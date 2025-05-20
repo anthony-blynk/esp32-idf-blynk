@@ -9,7 +9,7 @@ Main changes are:
 cd components
 git clone --recursive https://github.com/espressif/arduino-esp32.git arduino
 cd arduino
-git checkout tags/v3.2.0  # Replace with your target version
+git checkout tags/3.2.0  # Replace with your target version
 git submodule update --init --recursive
 ```
 
