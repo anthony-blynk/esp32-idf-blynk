@@ -6,7 +6,7 @@ There are two main source files:
 - blink_example_main.c for the IDF main task
 - blynk_main.cpp for the Blynk task
 
-These use a queue to communicate between the tasks.
+These use a queue to communicate between the two tasks.
 
 This uses two IDF components: the Blynk component, and that has a dependency on the ESP32 Arduino IDF Component.
 
@@ -30,7 +30,7 @@ git submodule update --init --recursive
 
 - creating a blynk folder in the main folder and copying in the Blynk .h files from https://github.com/blynkkk/blynk-library/tree/master/examples/Blynk.Edgent/Edgent_ESP32
 
-- also in the blynk folder adding three new files: blynk_interface.cpp, blynk_interface.h, and blynk_main.cpp
+- also in the blynk folder adding two  new files: blynk_interface.cpp, blynk_interface.h.
 
 - updating the existing blink_example_main.c to call blynkblynk_init() 
 
