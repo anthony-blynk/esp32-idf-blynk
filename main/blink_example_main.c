@@ -25,41 +25,38 @@ static const char *TAG = "exampleV7";
 #define BLINK_GPIO 23
 // #define BLINK_GPIO 18
 
-static uint8_t s_led_state = 0;
-
 QueueHandle_t led_queue;
-
-static void blink_led(void)
-{
-    s_led_state = !s_led_state;
-    gpio_set_level(BLINK_GPIO, s_led_state);
-}
 
 static void configure_led(void)
 {
     ESP_LOGI(TAG, "Example configured to blink GPIO LED!");
     gpio_reset_pin(BLINK_GPIO);
-    /* Set the GPIO as a push/pull output */
     gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
+
+    led_queue = xQueueCreate(10, sizeof(uint32_t));
+}
+
+static void blink_led(uint32_t led_state)
+{
+    gpio_set_level(BLINK_GPIO, led_state);
+    ESP_LOGI(TAG, "led set to %lu", led_state);
 }
 
 void app_main(void)
 {
     ESP_LOGI(TAG, "app_main start");
 
-    led_queue = xQueueCreate(10, sizeof(uint32_t));
+    configure_led();
 
     // init the Blynk task
     blynk_init(); 
 
-    configure_led();
-
-    while (1) {
-
+    while (1) 
+    {
         uint32_t received_num;
-        if (xQueueReceive(led_queue, &received_num, portMAX_DELAY)) {
-            ESP_LOGI(TAG, "led on for %lu in 10 secs", received_num);
-            blink_led();
+        if (xQueueReceive(led_queue, &received_num, portMAX_DELAY)) 
+        {
+            blink_led(received_num);
         }
     }
 }
