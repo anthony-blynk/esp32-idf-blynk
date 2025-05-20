@@ -1,8 +1,20 @@
 # How to use Blynk.Edgent with the ESP32 IDF Framework
 
-This is the ESP IDF Blink example with the Blynk.Edgent library added to it so that it supports Wifi provisioning and OTA updates from Blynk.
+This is an ESP IDF Blink example updated to use the Blynk.Edgent library to control an LED from the Blynk mobile app and to support Blynk Wifi provisioning and OTA updates.
+
+There are two main source files:
+- blink_example_main.c for the IDF main task
+- blynk_main.cpp for the Blynk task
+These use a queue to communicate between the tasks.
+
+This uses two IDF components: the Blynk component, and that has a dependency on the ESP32 Arduino IDF Component.
 
 Main changes are:
+
+- checkout aout the Blynk library into the components folder:
+```
+git clone https://github.com/blynkkk/blynk-library.git blynk
+```
 
 - checking out the ESP32 Arduino framework into the components folder:
 ```
@@ -13,16 +25,7 @@ git checkout tags/3.2.0  # Replace with your target version
 git submodule update --init --recursive
 ```
 
-- checkout aout the Blynk library into the components folder:
-```
-git clone https://github.com/blynkkk/blynk-library.git blynk
-```
-
-- there are two compile errors in the Blynk library when running with IDF, with easy fixes:
-```
-```
-
-- and some updates to CMakeLists.h and idf.component.yml
+- some updates to CMakeLists.h and idf.component.yml
 
 - creating a blynk folder in the main folder and copying in the Blynk .h files from https://github.com/blynkkk/blynk-library/tree/master/examples/Blynk.Edgent/Edgent_ESP32
 
