@@ -16,11 +16,10 @@
 
 #define APP_DEBUG
 
-// #include <blynk/BlynkEdgent.h>
 #include <blynk/BlynkEdgent.h>
 
-#define LED_PIN 2  // Use pin 2 for LED (change it, if your board uses another pin)
 
+extern QueueHandle_t led_queue;
 
 // V0 is a datastream used to transfer and store LED switch state.
 // Evey time you use the LED switch in the app, this function
@@ -31,19 +30,10 @@ BLYNK_WRITE(V0)
   // Based on this value, the physical LED on the board will be on or off:
   int value = param.asInt();
 
-  if (value == 1) {
-    digitalWrite(LED_PIN, HIGH);
-    Serial.print("value =");
-    Serial.println(value);
-  } else {
-    digitalWrite(LED_PIN, LOW);
-    Serial.print("value = ");
-    Serial.println(value);
-  }
+  xQueueSend(led_queue, &value, portMAX_DELAY);
 }
 void setup()
 {
-  pinMode(LED_PIN, OUTPUT);
 
   // Debug console. Make sure you have the same baud rate selected in your serial monitor
   Serial.begin(115200);
