@@ -5,6 +5,7 @@ This is an ESP IDF Blink example updated to use the Blynk.Edgent library to cont
 There are two main source files:
 - blink_example_main.c for the IDF main task
 - blynk_main.cpp for the Blynk task
+
 These use a queue to communicate between the tasks.
 
 This uses two IDF components: the Blynk component, and that has a dependency on the ESP32 Arduino IDF Component.
